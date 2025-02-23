@@ -23,7 +23,7 @@ export default function Home() {
 
   const handleSend = () => handleSendMessage();
 
-  function handleKeyPress(e: any): void {
+  function handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>): void {
     if (e.key === 'Enter') {
       handleSend();
     }

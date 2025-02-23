@@ -43,12 +43,12 @@ const initDB = async () => {
   return db;
 };
 
-export const addTransaction = async (transaction: any): Promise<Message> => {
+export const addTransaction = async (transaction: Omit<Message, "id">): Promise<Message> => {
   const db = await initDB();
   const tx = db.transaction(TRANSACTIONS_STORE, 'readwrite');
   const id = await tx.objectStore(TRANSACTIONS_STORE).add(transaction);
   await tx.done;
-  return { ...transaction, id };
+  return { ...transaction, id: id as number };
 };
 
 export const getTransactions = async (): Promise<Message[]> => {
@@ -66,19 +66,19 @@ export const deleteTransaction = async (id: number): Promise<void> => {
   await tx.done;
 };
 
-export const updateTransaction = async (id: number, updatedTransaction: any): Promise<void> => {
+export const updateTransaction = async (id: number, updatedTransaction: Message): Promise<void> => {
   const db = await initDB();
   const tx = db.transaction(TRANSACTIONS_STORE, 'readwrite');
   await tx.objectStore(TRANSACTIONS_STORE).put({ ...updatedTransaction, id });
   await tx.done;
 };
 
-export const addCategory = async (category: any): Promise<ActionTime<string>> => {
+export const addCategory = async (category: ActionTime<string>): Promise<ActionTime<string>> => {
   const db = await initDB();
   const tx = db.transaction(CATEGORIES_STORE, 'readwrite');
   const id = await tx.objectStore(CATEGORIES_STORE).add(category);
   await tx.done;
-  return { ...category, id };
+  return { ...category, id: id as number };
 };
 
 export const getCategories = async (): Promise<ActionTime<string>[]> => {
@@ -96,12 +96,12 @@ export const deleteCategory = async (id: number): Promise<void> => {
   await tx.done;
 };
 
-export const addAmount = async (amount: any): Promise<ActionTime<number>> => {
+export const addAmount = async (amount: ActionTime<number>): Promise<ActionTime<number>> => {
   const db = await initDB();
   const tx = db.transaction(AMOUNTS_STORE, 'readwrite');
   const id = await tx.objectStore(AMOUNTS_STORE).add(amount);
   await tx.done;
-  return { ...amount, id };
+  return { ...amount, id: id as number };
 };
 
 export const getAmounts = async (): Promise<ActionTime<number>[]> => {

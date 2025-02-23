@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { addTransaction as addTransactionToDB, getTransactions, addCategory as addCategoryToDB, getCategories, deleteCategory as deleteCategoryFromDB, addAmount as addAmountToDB, getAmounts, deleteAmount as deleteAmountFromDB } from '../utils/db';
 import { Message } from '../types/Message';
 import { useStore } from '../store/useStore';

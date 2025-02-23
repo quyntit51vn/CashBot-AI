@@ -3,7 +3,6 @@ import { PlusCircleIcon, MinusCircleIcon } from '@heroicons/react/16/solid';
 import { useStore } from '../store/useStore';
 import CategoryButtons from './CategoryButtons';
 import AmountButtons from './AmountButtons';
-import NewCategoryInput from './NewCategoryInput';
 
 interface MessageInputProps {
   handleSend: () => void;
